@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head'); %>
+
+  <body>
+    <%- include('../partials/nav'); %>
+	
+	<!-- Main-banner -->
+    <main>
+      <div class="equipo-detalles">
+        <div class="imagen-equipo-detalles">
+          <h3><%= equipo.tipo %></h3>
+          <hr>
+          <img class="imagen-detalles" src="/images/equipos/<%= equipo.imagen %>">
+        </div>
+    
+        <div class="info-equipo-detalles">
+          <div class="alert alert-success">Núm. Serie: <%= equipo.id %></div>
+          <br>
+          <div class="alert alert-success">Marca: <%= equipo.marca %></div>
+          <br>
+          <div class="alert alert-success">Modelo: <%= equipo.modelo %></div>
+          <br>
+          <div class="alert alert-success">Núm. Inventario: <%= equipo.inventario %></div>
+          <br>
+          <a class="btn btn-primary" href="/prestamos/registro/<%= equipo.id %>" role="button">Solicitar</a>
+        </div>
+      </div>
+    </main>
+	<!-- Main-banner -->
+    <%- include('../partials/footer'); %>
+  </body>
+</html>

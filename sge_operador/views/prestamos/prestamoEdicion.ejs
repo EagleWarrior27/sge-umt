@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head'); %>
+  
+  <body>
+    <%- include('../partials/nav'); %>
+	
+	<!-- Register-Form -->
+	<div class="container my-5">
+	  <div class="row justify-content-center">
+		<div class="col-md-10">
+		  <form method="POST" action="/prestamos/edicion/<%= oldData.id %>/<%= locals.userLogged.id %>">
+			<h2>Edición de Préstamo</h2>
+			<hr>
+			<div class="info-prestamo">
+			  <div class="alert alert-info"># Equipo: <%= oldData.id_equipo %></div>
+			  <div class="alert alert-info"># Alumno: <%= oldData.id_alumno %></div>
+		    </div>
+			
+		   <div class="row">
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Fecha devolución:</b></label>
+				  <input 
+					type="date" 
+					name="fecha_d" 
+					class="form-control <%= locals.errors && errors.fecha_d ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.fecha_d : null %>"
+				  >
+				  <% if (locals.errors && errors.fecha_d) { %>
+					<div class="text-danger">
+					  <%= errors.fecha_d.msg %>
+					</div>
+				  <% } %>
+			    </div>
+			  </div>
+			
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Hora devolución:</b></label>
+				  <input 
+					type="time" 
+					name="hora_d" 
+					class="form-control <%= locals.errors && errors.hora_d ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.hora_d : null %>"
+				  >
+				  <% if (locals.errors && errors.hora_d) { %>
+					<div class="text-danger">
+					  <%= errors.hora_d.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+				
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Tipo:</b></label>
+				  <select 
+				    name="tipo" 
+					class="form-select <%= locals.errors && errors.tipo ? 'is-invalid' : null %>"
+				  >
+					<%  
+					  let tipos = ['Interno', 'Externo'];
+					%>
+					<% for (const tipo of tipos) { %>
+					  <option 
+						value="<%= tipo %>"
+						<%= locals.oldData && (tipo === oldData.tipo) ? 'selected' : null %> 
+					  > <%= tipo %> </option>
+					<% } %>
+				  </select>
+
+				  <% if (locals.errors && errors.tipo) { %>
+					<div class="text-danger">
+					  <%= errors.tipo.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+
+			  <div class="col-12 my-3">
+				<button type="submit" class="btn btn-primary">Editar</button>
+			  </div>
+			</div>
+		  </form>
+		</div>
+	  </div>
+	</div>
+	<!-- //Register-Form -->
+	
+	<%- include('../partials/footer'); %>
+</body>
+</html>

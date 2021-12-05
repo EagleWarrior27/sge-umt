@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head'); %>
+  
+  <body>
+    <%- include('../partials/nav'); %>
+	
+	<!-- Register-Form -->
+	<div class="container my-5">
+	  <div class="row justify-content-center">
+		<div class="col-md-10">
+		  <form method="POST" action="/prestamos/registro/<%= idEquipo %>/<%= locals.userLogged.id %>">
+			<h2>Registro de Préstamo</h2>
+			<hr>
+			<div class="alert alert-info"># Equipo: <%= idEquipo %></div>
+			<div class="row">
+			  
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b># Alumno:</b></label>
+				  <input 
+					type="number" 
+					name="matricula" 
+					class="form-control <%= locals.errors && errors.matricula ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.matricula : null %>"
+				  >
+				  <% if (locals.errors && errors.matricula) { %>
+					<div class="text-danger">
+					  <%= errors.matricula.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+
+			  
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Tipo:</b></label>
+				  <select 
+				    name="tipo" 
+					class="form-select <%= locals.errors && errors.tipo ? 'is-invalid' : null %>"
+				  >
+					<option value="">Elige un tipo de equipo</option>
+					<%  
+					  let tipos = ['Interno', 'Externo'];
+					%>
+					<% for (const tipo of tipos) { %>
+					  <option 
+						value="<%= tipo %>"
+						<%= locals.oldData && (tipo === oldData.tipo) ? 'selected' : null %> 
+					  > <%= tipo %> </option>
+					<% } %>
+				  </select>
+
+				  <% if (locals.errors && errors.tipo) { %>
+					<div class="text-danger">
+					  <%= errors.tipo.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Fecha devolución:</b></label>
+				  <input 
+					type="date" 
+					name="fecha" 
+					class="form-control <%= locals.errors && errors.fecha ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.fecha : null %>"
+				  >
+				  <% if (locals.errors && errors.fecha) { %>
+					<div class="text-danger">
+					  <%= errors.fecha.msg %>
+					</div>
+				  <% } %>
+			    </div>
+			  </div>
+			
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Hora devolución:</b></label>
+				  <input 
+					type="time" 
+					name="hora" 
+					class="form-control <%= locals.errors && errors.hora ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.hora : null %>"
+				  >
+				  <% if (locals.errors && errors.hora) { %>
+					<div class="text-danger">
+					  <%= errors.hora.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+						
+			  <div class="col-12 my-3">
+				<button type="submit" class="btn btn-primary">Registrar</button>
+			  </div>
+			</div>
+		  </form>
+		</div>
+	  </div>
+	</div>
+	<!-- //Register-Form -->
+	
+	<%- include('../partials/footer'); %>
+</body>
+</html>

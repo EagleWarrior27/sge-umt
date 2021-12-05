@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head'); %>
+
+  <body>
+	<%- include('../partials/nav'); %>
+	
+	<!-- Main-banner -->
+	<main>
+	  <%- include('../partials/aside'); %> 
+
+	  <section>	
+	    <div class="lista-equipos">
+		  <% for (const equipo of equipos) { %>  
+		    <div class="descripcion-equipo">
+			  <a href="/equipos/detalles/<%= equipo.id %>">
+			    <div>
+			      <img class="imagen-equipo" src="/images/equipos/<%= equipo.imagen %>">
+			      <hr>
+				  <p>
+					<b class="text-white"><%= equipo.marca %> - </b>
+				    <i class="text-white"><%= equipo.id %></i>
+				  </p>
+			    </div>
+		      </a>
+		    </div>  
+		  <% } %>
+	    </div>
+	  </section>	  
+	</main>
+
+	<!-- //Main-banner -->
+	
+	<%- include('../partials/footer'); %>
+  </body>
+</html>

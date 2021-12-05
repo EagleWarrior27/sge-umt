@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head'); %>
+
+  <body>
+    <%- include('../partials/nav'); %>
+	
+	<!-- Main-banner -->
+    <main>
+      <div class="equipo-detalles">
+        <div class="imagen-equipo-detalles">
+          <h3><%= prestamo.equipos.tipo %></h3>
+          <hr>
+          <img class="imagen-devolucion" src="/images/equipos/<%= prestamo.equipos.imagen %>">
+          <div class="alert alert-success">Núm. Serie: <%= prestamo.equipos.id %></div>
+        </div>
+    
+        <div class="info-equipo-detalles">
+          <h4>Alumno</h4>
+          <div class="alert alert-success">Matrícula: <%= prestamo.alumnos.id %></div>
+          <br>
+          <div class="alert alert-success">Nombre: <%= prestamo.alumnos.nombre %></div>
+          <br>
+          <div class="alert alert-success">Procedencia: <%= prestamo.alumnos.procedencia %></div>
+          <hr>
+          <h4>Becario</h4>
+          <div class="alert alert-success"><%= prestamo.becarios.nombre %></div>
+          <br>
+
+          <form method="POST" action="/prestamos/devolucion/<%= prestamo.id %>/<%= prestamo.equipos.id %>">
+            <button type="submit" class="btn btn-primary">Devolver</button>
+          </form>
+        </div>
+      </div>
+    </main>
+	<!-- Main-banner -->
+    <%- include('../partials/footer'); %>
+  </body>
+</html>

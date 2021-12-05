@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head'); %>
+  
+  <body>
+    <%- include('../partials/nav'); %>
+	
+	<!-- Register-Form -->
+	<div class="container my-5">
+	  <div class="row justify-content-center">
+		<div class="col-md-8">
+		  <form id="alumnoForm" class="register-form" method="POST" action="/alumnos/registro">
+			<h2>Registro de Alumno</h2>
+			<hr>
+			<div class="row">
+			  <div class="col-12 my-3">
+				<div class="form-group">
+				  <label><b>Matrícula:</b></label>
+				  <input 
+					type="number" 
+					id="matricula"
+					name="matricula" 
+					class="form-control <%= locals.errors && errors.matricula ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.matricula : null %>"
+				  >
+				  <div><i id="matriculaErrorMsg" class="text-danger">  </i></div>
+				  <% if (locals.errors && errors.matricula) { %>
+					<div class="text-danger">
+					  <%= errors.matricula.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+
+			  <div class="col-12 my-3">
+				<div class="form-group">
+				  <label><b>Nombre:</b></label>
+				  <input 
+					type="text" 
+					id="nombre"
+					name="nombre" 
+					class="form-control <%= locals.errors && errors.nombre ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.nombre : null %>"
+				  >
+				  <div><i id="nombreErrorMsg" class="text-danger">  </i></div>
+				  <% if (locals.errors && errors.nombre) { %>
+					<div class="text-danger">
+					  <%= errors.nombre.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+
+			  <div class="col-12 my-3">
+				<div class="form-group">
+				  <label><b>Procedencia:</b></label>
+				  <input 
+					type="text" 
+					id="procedencia"
+					name="procedencia" 
+					class="form-control <%= locals.errors && errors.procedencia ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.procedencia : null %>"
+				  >
+				  <div><i id="procedenciaErrorMsg" class="text-danger">  </i></div>
+				  <% if (locals.errors && errors.procedencia) { %>
+					<div class="text-danger">
+					  <%= errors.procedencia.msg %>
+					</div>
+				  <% } %>
+			    </div>
+			  </div>
+						
+			  <div class="col-12 my-3">
+				<button type="submit" class="btn btn-primary">Registrar </button>
+			  </div>
+			</div>
+		  </form>
+		</div>
+	  </div>
+	</div>
+	<!-- //Register-Form -->
+	
+	<%- include('../partials/footer'); %>
+
+	<script src="/js/validateAlumnoScript.js"></script>
+</body>
+</html>

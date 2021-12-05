@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head'); %>
+  
+  <body>
+    <%- include('../partials/nav'); %>
+	
+	<!-- Register-Form -->
+	<div class="container my-5">
+	  <div class="row justify-content-center">
+		<div class="col-md-10">
+		  <form method="POST" action="/equipos/registro" enctype="multipart/form-data">
+			<h2>Registro de Equipo</h2>
+			<hr>
+			<div class="row">
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Número de serie:</b></label>
+				  <input 
+					type="number" 
+					name="numSerie" 
+					class="form-control <%= locals.errors && errors.numSerie ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.numSerie : null %>"
+				  >
+				  <% if (locals.errors && errors.numSerie) { %>
+					<div class="text-danger">
+					  <%= errors.numSerie.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Tipo:</b></label>
+				  <select 
+				    name="tipo" 
+					class="form-select <%= locals.errors && errors.tipo ? 'is-invalid' : null %>"
+				  >
+					<option value="">Elige un tipo de equipo</option>
+					<%  
+					  let tipos = ['Laptop', 'Videoproyector', 'Extensión', 'Regulador', 
+					      'Bocina', 'Tarjeta_inalámbrica', 'Impresora'];
+					%>
+					<% for (const tipo of tipos) { %>
+					  <option 
+						value="<%= tipo %>"
+						<%= locals.oldData && (tipo === oldData.tipo) ? 'selected' : null %> 
+					  > <%= tipo %> </option>
+					<% } %>
+				  </select>
+
+				  <% if (locals.errors && errors.tipo) { %>
+					<div class="text-danger">
+					  <%= errors.tipo.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Marca:</b></label>
+				  <input 
+					type="text" 
+					name="marca" 
+					class="form-control <%= locals.errors && errors.marca ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.marca : null %>"
+				  >
+				  <% if (locals.errors && errors.marca) { %>
+					<div class="text-danger">
+					  <%= errors.marca.msg %>
+					</div>
+				  <% } %>
+			    </div>
+			  </div>
+			
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Modelo:</b></label>
+				  <input 
+					type="text" 
+					name="modelo" 
+					class="form-control <%= locals.errors && errors.modelo ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.modelo : null %>"
+				  >
+				  <% if (locals.errors && errors.modelo) { %>
+					<div class="text-danger">
+					  <%= errors.modelo.msg %>
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+			
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Número de Inventario:</b></label>
+				  <input 
+					type="number" 
+					name="numInventario" 
+					class="form-control <%= locals.errors && errors.numInventario ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.numInventario : null %>"
+				  >
+				  <% if (locals.errors && errors.numInventario) { %>
+					<div class="text-danger">
+					  <%= errors.numInventario.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Imagen:</b></label>
+				  <input 
+					type="file" 
+					name="imagen"
+					class="form-control <%= locals.errors && errors.imagen ? 'is-invalid' : null %>"
+				  >
+				  <% if (locals.errors && errors.imagen) { %>
+					<div class="text-danger">
+					  <%= errors.imagen.msg %>
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+						
+			  <div class="col-12 my-3">
+				<button type="submit" class="btn btn-primary">Registrar</button>
+			  </div>
+			</div>
+		  </form>
+		</div>
+	  </div>
+	</div>
+	<!-- //Register-Form -->
+	
+	<%- include('../partials/footer'); %>
+</body>
+</html>

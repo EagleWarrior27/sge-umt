@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head'); %>
+  
+  <body>
+    <%- include('../partials/nav'); %>
+	
+	<!-- Register-Form -->
+	<div class="container my-5">
+	  <div class="row justify-content-center">
+		<div class="col-md-10">
+		  <form method="POST" action="/becarios/registro" enctype="multipart/form-data">
+			<h2>Registro de Becario</h2>
+			<hr>
+			<div class="row">
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b># de Becario:</b></label>
+				  <input 
+					type="number" 
+					name="id" 
+					class="form-control <%= locals.errors && errors.id ? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.id : null %>"
+				  >
+				  <% if (locals.errors && errors.id) { %>
+					<div class="text-danger">
+					  <%= errors.id.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Nombre:</b></label>
+				  <input 
+					type="text" 
+					name="nombre" 
+					class="form-control <%= locals.errors && errors.nombre? 'is-invalid' : null %>"
+					value="<%= locals.oldData ? oldData.nombre : null %>"
+				  >
+				  <% if (locals.errors && errors.nombre) { %>
+					<div class="text-danger">
+					  <%= errors.nombre.msg %> 
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Contraseña:</b></label>
+				  <input 
+					type="password" 
+					name="contrasenia" 
+					class="form-control <%= locals.errors && errors.contrasenia ? 'is-invalid' : null %>"
+				  >
+				  <% if (locals.errors && errors.contrasenia) { %>
+					<div class="text-danger">
+					  <%= errors.contrasenia.msg %>
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+			
+			  <div class="col-md-6 my-1">
+				<div class="form-group">
+				  <label><b>Imagen:</b></label>
+				  <input 
+					type="file" 
+					name="imagen"
+					class="form-control <%= locals.errors && errors.imagen ? 'is-invalid' : null %>"
+				  >
+				  <% if (locals.errors && errors.imagen) { %>
+					<div class="text-danger">
+					  <%= errors.imagen.msg %>
+					</div>
+				  <% } %>
+				</div>
+			  </div>
+						
+			  <div class="col-12 my-3">
+				<button type="submit" class="btn btn-primary">Registrar</button>
+			  </div>
+			</div>
+		  </form>
+		</div>
+	  </div>
+	</div>
+	<!-- //Register-Form -->
+	
+	<%- include('../partials/footer'); %>
+</body>
+</html>

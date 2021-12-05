@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+	<div class="container">
+		<a class="navbar-brand" href="/"><b>SGE UMT</a>
+	
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="mainNavbar">
+			<ul class="navbar-nav me-auto">  </ul>
+			
+			<ul class="navbar-nav align-items-center">
+				<% if (locals.isLogged) { %>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="dropUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<img src="/images/becarios/<%= locals.userLogged.imagen %>" width="40" style="border-radius: 100%;">
+							<%= locals.userLogged.nombre %> 
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/becarios/perfil">Mi perfil</a>
+							<li><hr class="dropdown-divider"></li>
+							<a class="dropdown-item" href="/becarios/salida">Salir</a>
+						</ul>
+					</li>
+				<% } else { %>
+					<li class="nav-item"><a class="nav-link" href="/becarios/acceso"><i class="fas fa-sign-in-alt"></i></a></li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</nav>

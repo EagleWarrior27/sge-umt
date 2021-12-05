@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head'); %>
+  
+  <body>
+	<%- include('../partials/nav'); %>
+	
+	<article>
+	  <div class="alert alert-info">
+		<h5>
+		  <b>Bienvenid@:</b>
+		  <i><%= becario.nombre %></i>
+		</h5> 
+	</article>
+
+	<article class="perfil-becario">
+	  <a href="/alumnos/registro">
+	    <div class="div-icono">
+	      <img class="img-icono" src="/images/main/iconos/alumno.png">
+		  <div class="alert alert-success">Alumnos</div>
+	    </div>
+	  </a>
+
+	  <a href="/equipos/registro">
+	    <div class="div-icono">
+	      <img class="img-icono" src="/images/main/iconos/equipo.png">
+	      <div class="alert alert-success">Equipos</div>
+	    </div>
+	  </a>
+
+	  <a href="/prestamos/lista">
+	    <div class="div-icono">
+		  <img class="img-icono" src="/images/main/iconos/prestamo.png">
+		  <div class="alert alert-success">Préstamos</div>
+	    </div>
+	  </a>
+	</article>
+	<!-- //Container -->
+	
+	<%- include('../partials/footer'); %>
+  </body>
+</html>

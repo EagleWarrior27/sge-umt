@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head'); %>
+
+  <body>
+	<%- include('../partials/nav'); %>
+	
+	<main>
+	  <section class="lista-prestamos">	
+	    <div class="lista-equipos">
+		  <% for (const prestamo of prestamos) { %>  
+		    <div class="descripcion-prestamo">
+			  <a href="/prestamos/devolucion/<%= prestamo.id %>">
+			    <div>
+			      <img class="imagen-equipo" src="/images/equipos/<%= prestamo.equipos.imagen %>">
+			      <hr>
+				  <b class="text-white"><%= prestamo.equipos.tipo %></b>
+				  <br>
+				  <i class="text-white"><%= prestamo.equipos.id %></b></i>
+			      <hr>
+				  <form method="POST" action="/prestamos/eliminacion/<%= prestamo.id %>/<%= prestamo.equipos.id %>" class="actions">
+					<a href="/prestamos/edicion/<%= prestamo.id %>">
+					  <button type="button" class="btn btn-warning">Editar</button>
+					</a>
+					
+					<button type="submit" class="btn btn-danger">Eliminar</button>
+				  </form>
+				</div>
+		      </a>
+		    </div>  
+		  <% } %>
+	    </div>
+	  </section>  
+	</main>
+
+	<%- include('../partials/footer'); %>
+  </body>
+</html>

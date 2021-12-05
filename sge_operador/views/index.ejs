@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('partials/head'); %>
+
+  <body>
+	<%- include('partials/nav'); %>
+
+	<main>
+	  <%- include('partials/aside'); %> 
+
+	  <section>
+		<%  
+		  let equipos = [
+		    { tipo: 'Laptop', imagen: 'laptop.jpg' },
+		    { tipo: 'Videoproyector', imagen: 'videoproyector.jpg' },
+		    { tipo: 'Extensión', imagen: 'extension.jpg' },
+		    { tipo: 'Regulador', imagen: 'regulador.jpg' },
+		    { tipo: 'Bocina', imagen: 'bocina.jpg' },
+		    { tipo: 'Tarjeta_inalámbrica', imagen: 'tarjeta_inalambrica.jpg' },
+		    { tipo: 'Impresora', imagen: 'impresora.jpg' }, 
+		  ];
+	    %> 
+
+	    <div class="lista-equipos">
+		  <% for (const equipo of equipos) { %>  
+		    <div class="descripcion-equipo">
+			  <a href="/equipos/categoria/<%= equipo.tipo %>">
+			    <div>
+			      <img class="imagen-equipo" src="/images/main/<%= equipo.imagen %>">
+			      <hr>
+			      <u class="text-white"><%= equipo.tipo %></u>
+			    </div>
+		      </a>
+		    </div>  
+		  <% } %>
+	    </div>
+	  </section>	  
+	</main>
+
+	<%- include('partials/footer'); %>
+  </body>
+</html>
