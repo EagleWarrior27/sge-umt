@@ -102,6 +102,7 @@ class PrestamoChart extends React.Component  {
           </div>
         </div>
         <button type="submit" class="btn btn-primary" onClick={()=>this.search()}>Consultar</button>
+        <button type="submit" class="btn btn-success" onClick={()=>window.print()}>Imprimir</button>
         <hr />
         
         <div className="card shadow mb-4">
